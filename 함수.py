@@ -96,3 +96,22 @@
 #         print("키 {0} 여자 표준 체중은 {1}입니다.".format(h,weight))
 
 # std_weight(175,"M")
+
+
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
+# 크롬 드라이버 자동 업데이트
+from webdriver_manager.chrome import ChromeDriverManager
+
+chrome_options = Options()
+chrome_options.binary_location = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+chrome_options.add_experimental_option("detach", True)
+print(ChromeDriverManager().install())
+
+service = Service(executable_path=ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=chrome_options)
+# 웹 페이지 해당 주소 이동
+driver.get("https://www.naver.com")
